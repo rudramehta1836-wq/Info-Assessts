@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Search, MapPin, List, LayoutDashboard, Command } from 'lucide-react';
+import { Search, MapPin, List, LayoutDashboard } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../api';
 

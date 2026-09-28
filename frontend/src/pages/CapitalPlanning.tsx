@@ -68,7 +68,7 @@ export default function CapitalPlanning() {
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                 <XAxis dataKey="year" axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} tickFormatter={(val) => `$${val/1000}k`} />
-                <RechartsTooltip formatter={(value: number) => formatCurrency(value)} cursor={{ fill: '#f8fafc' }} />
+                <RechartsTooltip formatter={(value: any) => formatCurrency(value)} cursor={{ fill: '#f8fafc' }} />
                 <Legend iconType="circle" />
                 <Bar dataKey="maintenanceCost" name="Maintenance Baseline" stackId="a" fill="#94a3b8" radius={[0, 0, 4, 4]} />
                 <Bar dataKey="replacementCost" name="Funded Replacements" stackId="a" fill="#4f46e5" radius={[4, 4, 0, 0]} />
