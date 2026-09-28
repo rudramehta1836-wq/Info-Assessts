@@ -10,6 +10,13 @@ app.use(express.json());
 
 const JWT_SECRET = 'super-secret-demo-key';
 
+// Auto-seed database if entirely empty
+const userCount = db.prepare('SELECT COUNT(*) as c FROM users').get() as { c: number };
+if (userCount.c === 0) {
+  console.log('Database is empty. Running full seed script...');
+  require('./db/seed');
+}
+
 // -- Authentication --
 app.post('/auth/login', (req, res) => {
   const { email, password } = req.body;

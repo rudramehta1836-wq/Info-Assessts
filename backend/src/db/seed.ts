@@ -4,13 +4,23 @@ import path from 'path';
 
 const dbPath = path.resolve(__dirname, '../../infrastructure.db');
 
-db.exec('PRAGMA foreign_keys = OFF;');
-['audit_logs', 'work_orders', 'inspections', 'lifecycle_events', 'assets', 'users'].forEach(t => db.exec(`DROP TABLE IF EXISTS ${t}`));
-db.exec('PRAGMA foreign_keys = ON;');
-initDb();
-const newDb = db;
+const userCount = db.prepare("SELECT COUNT(*) as c FROM sqlite_master WHERE type='table' AND name='users'").get() as any;
+let needsSeed = true;
+if (userCount.c > 0) {
+  const users = db.prepare('SELECT COUNT(*) as c FROM users').get() as any;
+  if (users.c > 0) {
+    needsSeed = false;
+  }
+}
 
-console.log('Seeding Database...');
+if (needsSeed) {
+  db.exec('PRAGMA foreign_keys = OFF;');
+  ['audit_logs', 'work_orders', 'inspections', 'lifecycle_events', 'assets', 'users', 'citizen_reports', 'approvals'].forEach(t => db.exec(`DROP TABLE IF EXISTS ${t}`));
+  db.exec('PRAGMA foreign_keys = ON;');
+  initDb();
+  const newDb = db;
+
+  console.log('Seeding Database...');
 
 // 1. Create Users
 const insertUser = newDb.prepare(`INSERT INTO users (name, email, role, password_hash) VALUES (?, ?, ?, ?)`);
@@ -251,3 +261,4 @@ for (let i = 0; i < 5; i++) {
 
 console.log('Seed complete! Credentials for testing:');
 console.table(users);
+}
