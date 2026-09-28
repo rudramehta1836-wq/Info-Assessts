@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { Link } from 'react-router-dom';
-import { Search, Filter, ArrowRight, Download } from 'lucide-react';
+import { Search, Download } from 'lucide-react';
 import CreateAssetModal from '../components/CreateAssetModal';
 import classNames from 'classnames';
 import { jsPDF } from 'jspdf';

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, Legend, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { Calculator, TrendingUp, AlertTriangle } from 'lucide-react';
+import { Calculator } from 'lucide-react';
 
 export default function CapitalPlanning() {
   const [budgetCap, setBudgetCap] = useState(500000);
@@ -24,7 +24,7 @@ export default function CapitalPlanning() {
     fetchPlan();
   }, [budgetCap]);
 
-  const formatCurrency = (value: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+  const formatCurrency = (value: any) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">

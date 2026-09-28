@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { api } from '../api';
-import { AlertCircle, Clock, CheckCircle, Search, GripVertical } from 'lucide-react';
+import { Clock, Search, GripVertical } from 'lucide-react';
 import classNames from 'classnames';
 import { format, formatDistanceToNow } from 'date-fns';
 

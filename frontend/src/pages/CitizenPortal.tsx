@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
-import { MapPin, AlertTriangle, CheckCircle, Search, ArrowRight, Loader2 } from 'lucide-react';
+import { MapPin, AlertTriangle, CheckCircle, ArrowRight, Loader2 } from 'lucide-react';
 import classNames from 'classnames';
 import { api } from '../api';
 
